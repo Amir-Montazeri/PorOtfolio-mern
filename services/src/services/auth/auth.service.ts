@@ -7,6 +7,11 @@ type UserAccountType = {
   role: string;
   token: string;
 };
+type UserReturningType = {
+  username: string;
+  role: string;
+  token: string;
+};
 
 const getUsers: () => UserAccountType[] = () => {
   let usersAsString = fs.readFileSync('users.json') as unknown as string;
@@ -80,9 +85,15 @@ export const loginWithUserPass = (username: string, password: string) => {
 // Login with token:
 export const loginWithToken = (token: string) => {
   const user = jwtTokenChecker(token);
-  let userDataWithOutPassword =
-    typeof user === null ? user : prepareUserData(user);
-  return userDataWithOutPassword;
+  type userType = typeof user;
+
+  let userDataWithOutPassword = (): UserReturningType | null => {
+    if (user) {
+      return prepareUserData(user);
+    }
+    return user;
+  };
+  return userDataWithOutPassword();
 };
 
 export const prepareUserData = (userData: UserAccountType) => {
