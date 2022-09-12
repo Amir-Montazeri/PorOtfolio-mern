@@ -2,7 +2,7 @@
   "name": "amistor",
   "version": "1.0.0",
   "description": "develop with react.js & webpack & tailwindcss & express.js",
-  "homepage": "https://github.com/Amir-Montazeri/amistor#readme",
+  "homepage": "https://github.com/Amir-Montazeri/amistor",
   "main": "index.js",
   "scripts": {
     "test-ui": "cd ./ui/ && npm run test",

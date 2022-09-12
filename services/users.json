@@ -4,5 +4,11 @@
     "password": "heasas",
     "role": "admin",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI4ODI0NzcsImRhdGEiOiJtc2Rlcl9hbWlyIiwiaWF0IjoxNjYyODc4ODc3fQ.azXLp9XafW73yeiqGQiNORRUdMJQOBaU6KqFW5I-MBA"
+  },
+  {
+    "username": "msder_amir_test",
+    "password": "heasas",
+    "role": "user",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI5OTY0MTEsImRhdGEiOiJtc2Rlcl9hbWlyX3Rlc3QiLCJpYXQiOjE2NjI5OTI4MTF9.3ICYIpzWNYjFc9YtWiPOxMVNN4R3C2yrrWsNdKxYQX4"
   }
 ]

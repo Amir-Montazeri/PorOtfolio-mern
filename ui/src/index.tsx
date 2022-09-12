@@ -1,8 +1,8 @@
 import './globalStyles.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './app';
+import Routers from './routers';
 
 const root = ReactDOM.createRoot(document.querySelector('#root') as Element);
 
-root.render(<App />);
+root.render(<Routers />);
