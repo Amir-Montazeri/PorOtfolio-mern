@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@services/*": ["services/src/*"]
+    }
+  },
+  "exclude": ["node_modules", ".eslintrc.js"]
+}

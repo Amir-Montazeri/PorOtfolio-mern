@@ -1,0 +1,27 @@
+{
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strict": true,
+    "sourceMap": true,
+    "sourceRoot": "./src",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "ESNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"]
+}
