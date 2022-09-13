@@ -10,11 +10,13 @@ const loginFields = [
     name: 'email',
     label: 'E-mail',
     type: 'email',
+    required: 'email field is required',
   },
   {
     name: 'password',
     label: 'Password',
     type: 'password',
+    required: 'password field is required',
   },
 ];
 

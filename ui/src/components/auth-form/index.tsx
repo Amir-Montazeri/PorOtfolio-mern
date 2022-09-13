@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import TextFields from './TextFields';
+import React, { FC, useEffect } from 'react';
+import TextField from './TextField';
 import { useForm } from 'react-hook-form';
 
 interface AuthFormPropTypes {
@@ -7,16 +7,12 @@ interface AuthFormPropTypes {
     label: string;
     type: string;
     name: string;
+    required: boolean | string;
   }[];
   submitText: string;
   isActive: boolean;
   side: 'left' | 'right';
 }
-
-type FormValuTypes = {
-  email: string;
-  password: string;
-};
 
 const AuthForm: FC<AuthFormPropTypes> = ({
   isActive,
@@ -24,7 +20,11 @@ const AuthForm: FC<AuthFormPropTypes> = ({
   submitText,
   side,
 }) => {
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
   const setCenterBaseOnSide = () =>
     side === 'left'
       ? 'translate-x-[35%] md:translate-x-[40%]'
@@ -39,9 +39,16 @@ const AuthForm: FC<AuthFormPropTypes> = ({
       }`}
       onSubmit={handleSubmit((e) => console.log(e))}
     >
-      {fields.map((field) => (
-        <TextFields field={field} {...register(field.name)} key={field.name} />
-      ))}
+      {fields.map((field) => {
+        return (
+          <TextField
+            field={field}
+            error={errors[field.name]?.message?.toString()}
+            {...register(field.name, { required: field.required })}
+            key={field.name}
+          />
+        );
+      })}
       <button
         type="submit"
         className="mt-auto py-[10px] text-white w-full bg-[#3b4465] rounded-lg"
