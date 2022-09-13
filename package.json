@@ -1,9 +1,8 @@
 {
-  "name": "amistor",
+  "name": "porotfolio",
   "version": "1.0.0",
   "description": "develop with react.js & webpack & tailwindcss & express.js",
-  "homepage": "https://github.com/Amir-Montazeri/amistor",
-  "main": "index.js",
+  "homepage": "https://github.com/Amir-Montazeri/PorOtfolio",
   "scripts": {
     "test-ui": "cd ./ui/ && npm run test",
     "test-services": "cd ./services/ && npm run test",
@@ -17,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Amir-Montazeri/amistor.git"
+    "url": "git+https://github.com/Amir-Montazeri/PorOtfolio.git"
   },
   "author": "",
   "license": "ISC",

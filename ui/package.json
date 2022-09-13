@@ -1,8 +1,8 @@
 {
-  "name": "amistor-ui",
+  "name": "porotfolio-ui",
   "version": "1.0.0",
   "description": "amistore web application base on react.js and ts",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --mode development --hot",

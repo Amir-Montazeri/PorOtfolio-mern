@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { AuthLayout } from 'layouts';
+import { AuthLayout } from '../../layouts';
 import AuthComponent from './auth-component';
 
 const Auth: FC = () => {
