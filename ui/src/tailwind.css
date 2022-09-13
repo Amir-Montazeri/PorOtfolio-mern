@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scrollbar-w-thin {
+  scrollbar-width: thin;
+}
+
+.textfield-normal {
+  @apply my-[10px] px-[3px] py-[5px] border-[2px] rounded-md transition-shadow duration-[.2s] focus-visible:outline-none focus-visible:shadow-md;
+}

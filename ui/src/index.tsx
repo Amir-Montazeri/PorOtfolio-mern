@@ -1,4 +1,4 @@
-import './globalStyles.css';
+import './tailwind.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Routers from './routers';

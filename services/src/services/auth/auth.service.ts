@@ -2,13 +2,13 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';
 
 type UserAccountType = {
-  username: string;
+  email: string;
   password: string;
   role: string;
   token: string;
 };
 type UserReturningType = {
-  username: string;
+  email: string;
   role: string;
   token: string;
 };
@@ -19,9 +19,9 @@ const getUsers: () => UserAccountType[] = () => {
   return parsedUsers;
 };
 
-const usernameIsExist: (username: string) => Boolean = (username) => {
+const usernameIsExist: (email: string) => Boolean = (email) => {
   const users = getUsers();
-  const userExist = users.some((user) => user.username === username);
+  const userExist = users.some((user) => user.email === email);
   return userExist;
 };
 
@@ -30,24 +30,24 @@ const jwtTokenChecker: (token: string) => UserAccountType | null = (token) => {
   const verify = jwt.verify(token, 'secret') as { data: string };
   if (verify) {
     const users = getUsers();
-    result = users.filter((user) => user.username === verify.data)[0];
+    result = users.filter((user) => user.email === verify.data)[0];
   }
   return result;
 };
 
 // Register
-export const addUser = (username: string, password: string) => {
+export const addUser = (email: string, password: string) => {
   let result = 'loading';
-  if (usernameIsExist(username)) {
+  if (usernameIsExist(email)) {
     result = 'user already exist';
   } else {
-    const role: 'user' | 'admin' = username === 'msder_amir' ? 'admin' : 'user';
+    const role: 'user' | 'admin' = email === 'msder_amir' ? 'admin' : 'user';
     const users = getUsers();
 
     let token = jwt.sign(
       {
         exp: Math.floor(Date.now() / 1000) + 60 * 60,
-        data: username,
+        data: email,
       },
       'secret'
     );
@@ -56,7 +56,7 @@ export const addUser = (username: string, password: string) => {
       [
         ...users,
         {
-          username,
+          email,
           password,
           role,
           token: token,
@@ -73,11 +73,11 @@ export const addUser = (username: string, password: string) => {
   };
 };
 
-// Login with username and password:
-export const loginWithUserPass = (username: string, password: string) => {
+// Login with email and password:
+export const loginWithUserPass = (email: string, password: string) => {
   const users = getUsers();
   const user = users.filter(
-    (user) => user.username === username && user.password === password
+    (user) => user.email === email && user.password === password
   )[0];
   return user ? prepareUserData(user) : false;
 };
