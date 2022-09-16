@@ -1,0 +1,20 @@
+[
+  {
+    "email": "asas@asas.co",
+    "password": "ujSFAZm2AyEr29N",
+    "role": "user",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjMyNjg2NjksImRhdGEiOiJhc2FzQGFzYXMuY28iLCJpYXQiOjE2NjMyNjUwNjl9.sUxDW3MhiLaFX4D6qgAYnB5iA7Mc1kP1dKxeFZjAhaY"
+  },
+  {
+    "email": "newemail@gmail.com",
+    "password": "ujSFAZm2AyEr29N",
+    "role": "user",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjMyNjg5NzMsImRhdGEiOiJuZXdlbWFpbEBnbWFpbC5jb20iLCJpYXQiOjE2NjMyNjUzNzN9.-s-JzT6vxGscxpbvGIvFqaBIzLsAmkQCyCcXuwaVxBc"
+  },
+  {
+    "email": "m3amir88@yahoo.com",
+    "password": "amir@0858",
+    "role": "admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjMzMTI1NDMsImRhdGEiOiJtM2FtaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjMzMDg5NDN9.jDYEGmQo27HTR39JclmRPqviaxPJpSE6HK-aC06o_pk"
+  }
+]

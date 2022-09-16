@@ -1,20 +1,15 @@
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 
-type UserAccountType = {
-  email: string;
-  password: string;
-  role: string;
-  token: string;
-};
-type UserReturningType = {
-  email: string;
-  role: string;
-  token: string;
-};
+import {
+  UserAccountType,
+  UserWithOutPasswordType,
+} from '../../../../entities/src';
 
 const getUsers: () => UserAccountType[] = () => {
-  let usersAsString = fs.readFileSync('users.json') as unknown as string;
+  let usersAsString = fs.readFileSync(
+    './src/data/users.json'
+  ) as unknown as string;
   let parsedUsers = JSON.parse(usersAsString);
   return parsedUsers;
 };
@@ -25,23 +20,32 @@ const usernameIsExist: (email: string) => Boolean = (email) => {
   return userExist;
 };
 
-const jwtTokenChecker: (token: string) => UserAccountType | null = (token) => {
-  let result: UserAccountType | null = null;
-  const verify = jwt.verify(token, 'secret') as { data: string };
+const jwtTokenChecker = (token: string): UserAccountType | false => {
+  let result: UserAccountType | false = false;
+  const verify = jwt.verify(token, 'secret') as {
+    exp: number;
+    data: string;
+    iat: number;
+  };
+
   if (verify) {
     const users = getUsers();
     result = users.filter((user) => user.email === verify.data)[0];
   }
+
   return result;
 };
 
-// Register
-export const addUser = (email: string, password: string) => {
-  let result = 'loading';
+export const registerUser = (email: string, password: string) => {
+  let result: {
+    status: 'loading' | 'user already exist' | 'user created';
+    token?: string;
+  } = { status: 'loading' };
   if (usernameIsExist(email)) {
-    result = 'user already exist';
+    result = { status: 'user already exist' };
   } else {
-    const role: 'user' | 'admin' = email === 'msder_amir' ? 'admin' : 'user';
+    const role: 'user' | 'admin' =
+      email === 'm3amir88@yahoo.com' ? 'admin' : 'user';
     const users = getUsers();
 
     let token = jwt.sign(
@@ -65,38 +69,36 @@ export const addUser = (email: string, password: string) => {
       null,
       2
     );
-    fs.writeFileSync('users.json', data);
-    result = 'user added!';
+    fs.writeFileSync('./src/data/users.json', data);
+    result = { status: 'user created', token };
   }
   return {
     result,
   };
 };
 
-// Login with email and password:
-export const loginWithUserPass = (email: string, password: string) => {
+export const loginWithUserPass = (
+  email: string,
+  password: string
+): false | UserWithOutPasswordType => {
   const users = getUsers();
   const user = users.filter(
     (user) => user.email === email && user.password === password
   )[0];
-  return user ? prepareUserData(user) : false;
+  return user ? userDataExceptPassword(user) : false;
 };
 
-// Login with token:
-export const loginWithToken = (token: string) => {
+export const loginWithToken = (
+  token: string
+): false | UserWithOutPasswordType => {
   const user = jwtTokenChecker(token);
-  type userType = typeof user;
+  console.log('-----------');
+  console.log('user: ', user);
 
-  let userDataWithOutPassword = (): UserReturningType | null => {
-    if (user) {
-      return prepareUserData(user);
-    }
-    return user;
-  };
-  return userDataWithOutPassword();
+  return user ? userDataExceptPassword(user) : false;
 };
 
-export const prepareUserData = (userData: UserAccountType) => {
+export const userDataExceptPassword = (userData: UserAccountType) => {
   const { password, ...otherData } = userData;
 
   return otherData;

@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { AuthLayout } from '../../layouts';
+// import { AuthLayout } from '@ui/layouts';
+// import { LoginComponent, RegisterComponent } from '@ui/components';
 import { LoginComponent, RegisterComponent } from '../../components';
+import { AuthLayout } from '@ui/layouts';
 
 const Auth: FC = () => {
   const { authType } = useParams();

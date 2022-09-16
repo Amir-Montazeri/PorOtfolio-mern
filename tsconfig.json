@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
+    "jsx": "react",
+    "typeRoots": ["node_modules/@types", "typings"],
     "baseUrl": ".",
     "paths": {
-      "@services/*": ["services/src/*"]
+      "@services/*": ["services/src/*"],
+      "@entities/*": ["entities/src/*"],
+      "@ui/*": ["ui/src/*"]
     }
   },
   "exclude": ["node_modules", ".eslintrc.js"]

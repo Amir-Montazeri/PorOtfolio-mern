@@ -1,17 +1,18 @@
-import React, { FC, useEffect } from 'react';
-import TextField from './TextField';
+import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import TextField from './TextField';
 
 interface AuthFormPropTypes {
   fields: {
     label: string;
     type: string;
-    name: string;
+    name: 'email' | 'password';
     required: boolean | string;
   }[];
   submitText: string;
   isActive: boolean;
   side: 'left' | 'right';
+  onSubmit: (e: RegisterFieldType) => void;
 }
 
 const AuthForm: FC<AuthFormPropTypes> = ({
@@ -19,12 +20,13 @@ const AuthForm: FC<AuthFormPropTypes> = ({
   fields,
   submitText,
   side,
+  onSubmit,
 }) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm<RegisterFieldType>();
   const setCenterBaseOnSide = () =>
     side === 'left'
       ? 'translate-x-[35%] md:translate-x-[40%]'
@@ -37,7 +39,7 @@ const AuthForm: FC<AuthFormPropTypes> = ({
           ? `bg-white w-[320px] z-[2] opacity-100 ${setCenterBaseOnSide()} shadow-md`
           : 'bg-[#d7e7f1] !h-[310px] w-[220px] z-[1] opacity-50 translate-y-[20px] dr-children:opacity-0'
       }`}
-      onSubmit={handleSubmit((e) => console.log(e))}
+      onSubmit={handleSubmit((e) => onSubmit(e))}
     >
       {fields.map((field) => {
         return (
