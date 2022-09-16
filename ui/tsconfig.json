@@ -2,14 +2,21 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "module": "esnext",
+    "jsx": "react",
     "moduleResolution": "node",
     "types": ["node"],
     "lib": ["dom", "esnext"],
+    "sourceRoot": "./src",
     "strict": true,
     "sourceMap": true,
-    "target": "esnext"
+    "target": "esnext",
+    "removeComments": true,
+    "baseUrl": "src",
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "paths": {
+      "@entities/*": ["../../entities/src/*"]
+    }
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "./declarations.d.ts"],
-  "extends": "../tsconfig.json",
   "exclude": ["node_modules"]
 }

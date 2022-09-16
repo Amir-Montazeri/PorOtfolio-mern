@@ -12,7 +12,7 @@ interface AuthFormPropTypes {
   submitText: string;
   isActive: boolean;
   side: 'left' | 'right';
-  onSubmit: (e: RegisterFieldType) => void;
+  onSubmit: (e: AuthFieldType) => void;
 }
 
 const AuthForm: FC<AuthFormPropTypes> = ({
@@ -26,7 +26,7 @@ const AuthForm: FC<AuthFormPropTypes> = ({
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<RegisterFieldType>();
+  } = useForm<AuthFieldType>();
   const setCenterBaseOnSide = () =>
     side === 'left'
       ? 'translate-x-[35%] md:translate-x-[40%]'

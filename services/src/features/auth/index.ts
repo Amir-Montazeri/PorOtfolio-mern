@@ -1,10 +1,9 @@
 import express from 'express';
-// import { registerUser, getUsers, userExist } from '../../services/auth/auth.service';
 import {
   registerUser,
   loginWithToken,
   loginWithUserPass,
-} from '../../services/auth/auth.service';
+} from 'services/auth/auth.service';
 
 const router = express.Router();
 
@@ -27,7 +26,6 @@ router.post('/register', (req, res) => {
 router.get('/login', (req, res) => {
   const { email, password } = req.query;
   const { token } = req;
-  let isUserExist;
 
   if (!token && (!email || !password)) {
     res.status(400).json({ message: 'email and password or token required' });
@@ -46,21 +44,6 @@ router.get('/login', (req, res) => {
       res.status(200).json({ message: 'user was exist', user });
     }
   }
-
-  // if (token && (!email || !password)) {
-  //   isUserExist = loginWithToken(token);
-
-  //   res.status(200).json({ message: 'user was exist', res: isUserExist });
-  //   return;
-  // } else if (!token && (!email || !password)) {
-  // } else if (typeof email === 'string' && typeof password === 'string') {
-  //   isUserExist = loginWithUserPass(email, password);
-  //   if (!Boolean(isUserExist)) {
-  //     res.status(404).json({ message: 'user not exist' });
-  //   } else {
-  //     res.status(200).json({ message: 'user was exist', token });
-  //   }
-  // }
 });
 
 export default router;

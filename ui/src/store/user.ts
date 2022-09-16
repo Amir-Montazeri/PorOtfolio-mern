@@ -1,5 +1,4 @@
-// import { UserWithOutPasswordType } from '@entities/src';
-import { UserWithOutPasswordType } from '../../../entities/src';
+import { UserWithOutPasswordType } from '@entities/index';
 import { SET_USER } from './actions/actionTypes';
 
 const INITIAL_STATE = null;
