@@ -6,6 +6,8 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { loginUserWithAccessToken } from 'store/user/action';
 import { logOut } from 'store/user/userSlice';
 import { Lazy } from './features';
+import Loading from 'features/loading';
+import { setGlobalLoading } from 'store/global-loading/globalLoadingSlice';
 
 const Auth = React.lazy(() => import('./pages/auth'));
 
@@ -21,16 +23,19 @@ const addAuthGuardLazy = (
 
 const Routers: FC = () => {
   const dispatch = useAppDispatch(),
-    { user } = useAppSelector((state) => state.user);
+    { user, globalLoading } = useAppSelector((state) => state);
 
   React.useEffect(() => {
     const accessToken = getItem('access');
 
-    accessToken && dispatch(loginUserWithAccessToken(accessToken));
+    if (accessToken) {
+      dispatch(loginUserWithAccessToken(accessToken));
+    }
   }, []);
 
   return (
     <Router>
+      <Loading loading={globalLoading.loading} status={globalLoading.status} />
       <Routes>
         <Route
           path="/auth/:authType"
@@ -41,7 +46,7 @@ const Routers: FC = () => {
           element={
             <div>
               Not Found <Link to="/auth/login">Auth</Link>
-              {user && <h3 onClick={() => dispatch(logOut())}>logout</h3>}
+              {user.user && <h3 onClick={() => dispatch(logOut())}>logout</h3>}
             </div>
           }
         />

@@ -3,7 +3,12 @@
 module.exports = {
   content: ['./{src,public}/**/*.{html,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'loading-dot': 'loading-dot 2.8s infinite',
+        'loading-dots': 'loading-dots 2.8s infinite',
+      },
+    },
   },
   plugins: [
     function ({ addVariant }) {

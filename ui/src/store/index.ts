@@ -3,6 +3,7 @@ import user from './user/userSlice';
 
 const store = configureStore({
   reducer: {
+    globalLoading: globalLoadingSlice.reducer,
     user: user.reducer,
   },
 });
@@ -17,6 +18,7 @@ export type AppDispatch = typeof store.dispatch;
 // app/hooks.ts
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import globalLoadingSlice from './global-loading/globalLoadingSlice';
 // import type { RootState, AppDispatch } from './store'
 
 // Use throughout your app instead of plain `useDispatch` and `useSelector`

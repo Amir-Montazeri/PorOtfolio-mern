@@ -3,6 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { baseApiUrl } from 'api';
 import { setItem } from 'clientBrowser/localStorage';
 import { ReturnedRegisterUserSuccessType } from '@entities/user';
+import { setGlobalLoading } from 'store/global-loading/globalLoadingSlice';
+import { useAppDispatch } from 'store';
 
 export const registerUser = createAsyncThunk(
   'registerUser',
@@ -48,7 +50,10 @@ export const loginUserWithEmailAndPassword = createAsyncThunk(
 
 export const loginUserWithAccessToken = createAsyncThunk(
   'loginUserWAT',
-  async (token: string) => {
+  async (token: string, thunkAPI) => {
+    thunkAPI.dispatch(
+      setGlobalLoading({ loading: true, status: 'checking your access token' })
+    );
     const response = await axios
       .get(`${baseApiUrl}/auth/login`, {
         headers: {
@@ -56,9 +61,17 @@ export const loginUserWithAccessToken = createAsyncThunk(
         },
       })
       .then((res) => {
+        console.log('here!');
         const { data }: { data: ReturnedRegisterUserSuccessType } = res;
 
         return { user: data };
+      })
+      .finally(() => {
+        thunkAPI.dispatch(
+          setGlobalLoading({
+            loading: false,
+          })
+        );
       });
 
     return response;
