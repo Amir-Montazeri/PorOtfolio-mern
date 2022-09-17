@@ -12,6 +12,13 @@ export interface UserWithOutPasswordType {
 }
 
 export interface ReturnedRegisterUserType {
+  status: string;
+  email?: string;
+  role?: string;
+  token?: string;
+}
+
+export interface FrontReturnedRegisterUserType {
   email?: string;
   role?: string;
   token?: string;

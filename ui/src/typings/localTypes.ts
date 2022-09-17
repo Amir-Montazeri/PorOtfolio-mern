@@ -1,10 +1,10 @@
-import type { ReturnedRegisterUserType } from '@entities/user';
+import type { FrontReturnedRegisterUserType } from '@entities/user';
 
 export interface UserSliceType {
   error: {
     login: string | null;
     register: string | null;
   };
-  user: ReturnedRegisterUserType | null;
+  user: FrontReturnedRegisterUserType | null;
   isLoading: boolean;
 }

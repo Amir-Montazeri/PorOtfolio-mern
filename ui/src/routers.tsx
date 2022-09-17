@@ -49,6 +49,7 @@ const Routers: FC = () => {
             <div>
               Not Found <Link to="/auth/login">Auth</Link>
               {user.user && <p>email: {user.user.email}</p>}
+              {user.user && <p>role: {user.user.role}</p>}
               {user.user && <h3 onClick={() => dispatch(logOut())}>logout</h3>}
             </div>
           }
