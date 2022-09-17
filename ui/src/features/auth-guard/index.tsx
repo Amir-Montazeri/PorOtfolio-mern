@@ -26,8 +26,8 @@ function AuthGuard({ renderIf, children }: AuthGuardPropTypes) {
         return children;
       } else return <Navigate to="/" />;
 
-    default:
-      return <h3>Loading..</h3>;
+    // default:
+    //   return <h3>Loading..</h3>;
   }
 }
 

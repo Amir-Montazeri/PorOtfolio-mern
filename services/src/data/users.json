@@ -3,66 +3,6 @@
     "email": "m3amir88@yahoo.com",
     "password": "amir@0858",
     "role": "admin",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDIwNTAsImRhdGEiOiJtM2FtaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0Mzg0NTB9.JnrmGC6lyIeRt6wvm8KyHJTththHcFuOR4qdPYF3maM"
-  },
-  {
-    "email": "m3amisaasr88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDI2MTQsImRhdGEiOiJtM2FtaXNhYXNyODhAeWFob28uY29tIiwiaWF0IjoxNjYzNDM5MDE0fQ.QoMR58Y5uwM59aBu9y-P_b5eqFmIh64a4ZRycJmmadA"
-  },
-  {
-    "email": "m3amasasasir88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDI2MjUsImRhdGEiOiJtM2FtYXNhc2FzaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0MzkwMjV9.mRzrDr8BwojLJN8WfrlolGdaM54liPP5InHqZ5Ux5sc"
-  },
-  {
-    "email": "m3amasasir88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDI2ODksImRhdGEiOiJtM2FtYXNhc2lyODhAeWFob28uY29tIiwiaWF0IjoxNjYzNDM5MDg5fQ.ThVAygkLa7EtaYKBikJ7MyXYu3EWdoCu2_TjGznJm88"
-  },
-  {
-    "email": "m3amasasasasir88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDI3MzYsImRhdGEiOiJtM2FtYXNhc2FzYXNpcjg4QHlhaG9vLmNvbSIsImlhdCI6MTY2MzQzOTEzNn0.cgcs0JTk65jTjY34KXX7JdTVx4FO__iyyVpJqklpxh4"
-  },
-  {
-    "email": "m3aasddasmir88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDI3NDcsImRhdGEiOiJtM2Fhc2RkYXNtaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0MzkxNDd9.sZj_7m7-cbiXJmPFBMShKKcUfCSkgMvYpxWovAoNIYc"
-  },
-  {
-    "email": "m3amiraddsaasd88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDI3NTQsImRhdGEiOiJtM2FtaXJhZGRzYWFzZDg4QHlhaG9vLmNvbSIsImlhdCI6MTY2MzQzOTE1NH0.i4FzwgEodc5RvUX0KxATgPqH-lnoaIesS7HuOTyDJs0"
-  },
-  {
-    "email": "m3amirasasasas88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDMwMzksImRhdGEiOiJtM2FtaXJhc2FzYXNhczg4QHlhaG9vLmNvbSIsImlhdCI6MTY2MzQzOTQzOX0._22YL6Kt54ioWL1FzUnO2WN8QohpD-nvkn2_Lt6C_48"
-  },
-  {
-    "email": "m3amasassair88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDMwOTQsImRhdGEiOiJtM2FtYXNhc3NhaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0Mzk0OTR9.lv6Nz2wwjzMUWFaEAZGcF0402JK0Ddaoz5Kwnuw1Vag"
-  },
-  {
-    "email": "m3aasasasmir88@yahoo.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDM0NzAsImRhdGEiOiJtM2Fhc2FzYXNtaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0Mzk4NzB9.SIHEJ1Xvbm3fiERejN6Z3yeGSuzNjXeq5_kzToMIs18"
-  },
-  {
-    "email": "m3amir88@yahaaso.com",
-    "password": "amir@0858",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NDQ1MDUsImRhdGEiOiJtM2FtaXI4OEB5YWhhYXNvLmNvbSIsImlhdCI6MTY2MzQ0MDkwNX0.QKKPQxEs_HoaD8OXIElhpRKlsQyRjylNPN2tHhwTN44"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NTA5MzMsImRhdGEiOiJtM2FtaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0NDczMzN9.iYTu64hKdWqTEDehkK1HmgP3SPr5LrO4lqjZ-wJ5pX0"
   }
 ]

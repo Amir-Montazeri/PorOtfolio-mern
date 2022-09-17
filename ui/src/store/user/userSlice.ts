@@ -51,13 +51,9 @@ const userSlice = createSlice({
         state.user = payload.user;
       }
     );
-    builder.addCase(loginUserWithAccessToken.pending, (state) => {
-      state.isLoading = true;
-    });
     builder.addCase(
       loginUserWithAccessToken.fulfilled,
       (state: UserSliceType, { payload }) => {
-        state.isLoading = false;
         state.user = payload.user;
       }
     );

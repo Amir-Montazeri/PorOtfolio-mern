@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { baseApiUrl } from 'api';
-import { setItem } from 'clientBrowser/localStorage';
+import { removeItem, setItem } from 'clientBrowser/localStorage';
 import { ReturnedRegisterUserSuccessType } from '@entities/user';
 import { setGlobalLoading } from 'store/global-loading/globalLoadingSlice';
 import { useAppDispatch } from 'store';
@@ -34,10 +34,14 @@ export const loginUserWithEmailAndPassword = createAsyncThunk(
     const response = await axios
       .get(`${baseApiUrl}/auth/login?email=${email}&password=${password}`)
       .then((res) => {
-        const { data }: { data: ReturnedRegisterUserSuccessType } = res;
-        setItem('access', data.token);
+        const {
+          data,
+        }: {
+          data: { message: string; user: ReturnedRegisterUserSuccessType };
+        } = res;
+        setItem('access', data.user.token);
 
-        return { user: data, error: { login: null } };
+        return { user: data.user, error: { login: null } };
       })
       .catch((err) => ({
         user: null,
@@ -61,10 +65,15 @@ export const loginUserWithAccessToken = createAsyncThunk(
         },
       })
       .then((res) => {
-        console.log('here!');
         const { data }: { data: ReturnedRegisterUserSuccessType } = res;
 
+        console.log('token data', data);
+
         return { user: data };
+      })
+      .catch(() => {
+        removeItem('access');
+        return { user: null };
       })
       .finally(() => {
         thunkAPI.dispatch(
