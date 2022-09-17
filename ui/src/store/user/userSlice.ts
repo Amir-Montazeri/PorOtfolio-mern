@@ -7,8 +7,9 @@ import {
   loginUserWithEmailAndPassword,
   loginUserWithAccessToken,
 } from './action';
+import { ReturnedRegisterUserType } from '@entities/user';
 
-const initialState = {
+const initialState: UserSliceType = {
   user: null,
   error: {
     register: null,

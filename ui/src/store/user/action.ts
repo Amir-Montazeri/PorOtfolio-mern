@@ -65,11 +65,13 @@ export const loginUserWithAccessToken = createAsyncThunk(
         },
       })
       .then((res) => {
-        const { data }: { data: ReturnedRegisterUserSuccessType } = res;
+        const {
+          data,
+        }: {
+          data: { message: string; user: ReturnedRegisterUserSuccessType };
+        } = res;
 
-        console.log('token data', data);
-
-        return { user: data };
+        return { user: data.user };
       })
       .catch(() => {
         removeItem('access');
