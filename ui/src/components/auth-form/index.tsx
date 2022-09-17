@@ -12,6 +12,8 @@ interface AuthFormPropTypes {
   submitText: string;
   isActive: boolean;
   side: 'left' | 'right';
+  error?: string | null;
+  isLoading?: boolean;
   onSubmit: (e: AuthFieldType) => void;
 }
 
@@ -20,6 +22,8 @@ const AuthForm: FC<AuthFormPropTypes> = ({
   fields,
   submitText,
   side,
+  error,
+  isLoading,
   onSubmit,
 }) => {
   const {
@@ -51,9 +55,11 @@ const AuthForm: FC<AuthFormPropTypes> = ({
           />
         );
       })}
+      {error && <p className="text-red-700">{error}</p>}
       <button
         type="submit"
         className="mt-auto py-[10px] text-white w-full bg-[#3b4465] rounded-lg"
+        disabled={isLoading}
       >
         {submitText}
       </button>

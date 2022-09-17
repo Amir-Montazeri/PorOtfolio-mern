@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
-import axios from 'axios';
 
 import AuthForm from '../auth-form';
+import { registerUser } from 'store/user/action';
+import { useAppDispatch, useAppSelector } from 'store';
 
 interface LoginComponentPropTypes {
   isActive: boolean;
-}
-
-interface AuthDataType {
-  email: string;
-  password: string;
 }
 
 const registerFields: {
@@ -33,19 +29,13 @@ const registerFields: {
 ];
 
 const RegisterComponent: FC<LoginComponentPropTypes> = ({ isActive }) => {
-  const handleSubmitForm = (data: AuthDataType) => {
-    const { email, password } = data;
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => {
+    return state.user;
+  });
 
-    axios
-      .post(
-        `http://localhost:5000/auth/register?email=${email}&password=${password}`
-      )
-      .then((res) => {
-        console.log('suc! ', res);
-      })
-      .catch((err) => {
-        console.log('err! ', err);
-      });
+  const handleSubmitForm = (data: AuthFieldType) => {
+    dispatch(registerUser(data));
   };
 
   return (
@@ -53,6 +43,8 @@ const RegisterComponent: FC<LoginComponentPropTypes> = ({ isActive }) => {
       fields={registerFields}
       submitText="register"
       isActive={isActive}
+      error={user.error.register}
+      isLoading={user.isLoading}
       onSubmit={handleSubmitForm}
       side="right"
     />

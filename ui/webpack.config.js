@@ -7,14 +7,16 @@ module.exports = {
   mode: 'development',
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
+
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    path: `${__dirname}/dist/`,
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
     historyApiFallback: true,
+    allowedHosts: 'all',
   },
   module: {
     rules: [
@@ -39,6 +41,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({ template: './public/index.html' }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html'),
+    }),
   ],
 };

@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
-import axios from 'axios';
 import AuthForm from '../auth-form';
+import { useAppDispatch, useAppSelector } from 'store';
+import { loginUserWithEmailAndPassword } from 'store/user/action';
 
 interface LoginComponentPropTypes {
   isActive: boolean;
@@ -32,19 +33,13 @@ interface AuthDataType {
 }
 
 const LoginComponent: FC<LoginComponentPropTypes> = ({ isActive }) => {
-  const handleSubmitForm = (data: AuthDataType) => {
-    const { email, password } = data;
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => {
+    return state.user;
+  });
 
-    axios
-      .get(
-        `http://localhost:5000/auth/login?email=${email}&password=${password}`
-      )
-      .then((res) => {
-        console.log('suc! ', res);
-      })
-      .catch((err) => {
-        console.log('err! ', err);
-      });
+  const handleSubmitForm = (data: AuthDataType) => {
+    dispatch(loginUserWithEmailAndPassword(data));
   };
 
   return (
@@ -52,6 +47,8 @@ const LoginComponent: FC<LoginComponentPropTypes> = ({ isActive }) => {
       fields={loginFields}
       submitText="login"
       isActive={isActive}
+      error={user.error.login}
+      isLoading={user.isLoading}
       onSubmit={handleSubmitForm}
       side="left"
     />

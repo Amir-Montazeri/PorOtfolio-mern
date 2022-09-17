@@ -1,5 +1,6 @@
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
+import { ReturnedRegisterUserType } from 'src/../../entities/src/user';
 
 import {
   UserAccountType,
@@ -37,10 +38,7 @@ const jwtTokenChecker = (token: string): UserAccountType | false => {
 };
 
 export const registerUser = (email: string, password: string) => {
-  let result: {
-    status: 'loading' | 'user already exist' | 'user created';
-    token?: string;
-  } = { status: 'loading' };
+  let result: ReturnedRegisterUserType = { status: 'loading' };
   if (usernameIsExist(email)) {
     result = { status: 'user already exist' };
   } else {
@@ -70,7 +68,7 @@ export const registerUser = (email: string, password: string) => {
       2
     );
     fs.writeFileSync('./src/data/users.json', data);
-    result = { status: 'user created', token };
+    result = { status: 'user created', token, email, role };
   }
   return {
     result,
