@@ -33,8 +33,6 @@ const Routers: FC = () => {
     }
   }, []);
 
-  console.log(user.user);
-
   return (
     <Router>
       <Loading loading={globalLoading.loading} status={globalLoading.status} />

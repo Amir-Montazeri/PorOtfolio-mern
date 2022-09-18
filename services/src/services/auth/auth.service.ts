@@ -1,17 +1,48 @@
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import { ReturnedRegisterUserType } from 'src/../../entities/src/user';
+import config from './config.json';
 
 import {
   UserAccountType,
   UserWithOutPasswordType,
 } from '../../../../entities/src';
 
+interface JWTVerifyType {
+  exp: number;
+  data: string;
+  iat: number;
+}
+
+const setUsers = (
+  newUserData: UserAccountType,
+  prevUsers?: UserAccountType[]
+) => {
+  const { email, password, role, token } = newUserData;
+  const users = getUsers();
+
+  let data = JSON.stringify(
+    [
+      ...(prevUsers ? prevUsers : users),
+      {
+        email,
+        password,
+        role,
+        token: token,
+      },
+    ],
+    null,
+    2
+  );
+  fs.writeFileSync(config.usersListPath, data);
+};
+
 const getUsers: () => UserAccountType[] = () => {
   let usersAsString = fs.readFileSync(
-    './src/data/users.json'
+    config.usersListPath
   ) as unknown as string;
   let parsedUsers = JSON.parse(usersAsString);
+
   return parsedUsers;
 };
 
@@ -21,16 +52,37 @@ const usernameIsExist: (email: string) => Boolean = (email) => {
   return userExist;
 };
 
+const generateNewToken = (email: string): string => {
+  let users = getUsers();
+  const currentUser = users.filter((user) => user.email === email)[0],
+    otherUsers = users.filter((user) => user.email !== email);
+
+  let newToken = jwt.sign(
+    {
+      data: currentUser.email,
+    },
+    'secret',
+    {
+      expiresIn: config.jwtTokenExp,
+    }
+  );
+
+  setUsers({ ...currentUser, token: newToken }, otherUsers);
+
+  return newToken;
+};
+
 const jwtTokenChecker = (token: string): UserAccountType | false => {
   let result: UserAccountType | false = false;
-  const verify = jwt.verify(token, 'secret') as {
-    exp: number;
-    data: string;
-    iat: number;
-  };
+  const users = getUsers(),
+    user = users.filter((user) => user.token === token)[0];
+
+  const verify: JWTVerifyType = jwt.verify(
+    user.token,
+    'secret'
+  ) as JWTVerifyType;
 
   if (verify) {
-    const users = getUsers();
     result = users.filter((user) => user.email === verify.data)[0];
   }
 
@@ -44,30 +96,18 @@ export const registerUser = (email: string, password: string) => {
   } else {
     const role: 'user' | 'admin' =
       email === 'm3amir88@yahoo.com' ? 'admin' : 'user';
-    const users = getUsers();
 
     let token = jwt.sign(
       {
-        exp: Math.floor(Date.now() / 1000) + 60 * 60,
         data: email,
       },
-      'secret'
+      'secret',
+      {
+        expiresIn: config.jwtTokenExp,
+      }
     );
 
-    let data = JSON.stringify(
-      [
-        ...users,
-        {
-          email,
-          password,
-          role,
-          token: token,
-        },
-      ],
-      null,
-      2
-    );
-    fs.writeFileSync('./src/data/users.json', data);
+    setUsers({ email, password, role, token });
     result = { status: 'user created', token, email, role };
   }
   return {
@@ -83,15 +123,23 @@ export const loginWithUserPass = (
   const user = users.filter(
     (user) => user.email === email && user.password === password
   )[0];
-  return user ? userDataExceptPassword(user) : false;
+  let token: string = user.token;
+
+  try {
+    jwt.verify(user.token, 'secret') as JWTVerifyType;
+  } catch (err) {
+    if (err instanceof jwt.TokenExpiredError) {
+      token = generateNewToken(user.email);
+    }
+  }
+
+  return user ? userDataExceptPassword({ ...user, token }) : false;
 };
 
 export const loginWithToken = (
   token: string
 ): false | UserWithOutPasswordType => {
   const user = jwtTokenChecker(token);
-  console.log('-----------');
-  console.log('user: ', user);
 
   return user ? userDataExceptPassword(user) : false;
 };

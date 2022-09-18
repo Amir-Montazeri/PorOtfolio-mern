@@ -3,12 +3,6 @@
     "email": "m3amir88@yahoo.com",
     "password": "amir@0858",
     "role": "admin",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NTA5MzMsImRhdGEiOiJtM2FtaXI4OEB5YWhvby5jb20iLCJpYXQiOjE2NjM0NDczMzN9.iYTu64hKdWqTEDehkK1HmgP3SPr5LrO4lqjZ-wJ5pX0"
-  },
-  {
-    "email": "m3omid69@gmail.com",
-    "password": "dfgh,lkjh",
-    "role": "user",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM0NTE5MTQsImRhdGEiOiJtM29taWQ2OUBnbWFpbC5jb20iLCJpYXQiOjE2NjM0NDgzMTR9.isD4--G2258bUGmZynMz9cUMrho2MMeUiRMayxtI6OE"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoibTNhbWlyODhAeWFob28uY29tIiwiaWF0IjoxNjYzNDk2NjczLCJleHAiOjE2NjYwODg2NzN9.QNyaweWhVwnOiSfOeIOnTzCIv0HqPdGS0QZRhunqZoQ"
   }
 ]

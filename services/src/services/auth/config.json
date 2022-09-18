@@ -1,0 +1,4 @@
+{
+  "jwtTokenExp": "30d",
+  "usersListPath": "./src/data/users.json"
+}
