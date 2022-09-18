@@ -123,16 +123,18 @@ export const loginWithUserPass = (
   const user = users.filter(
     (user) => user.email === email && user.password === password
   )[0];
-  let token: string = user.token;
+  let token: string = '';
+  if (user) {
+    token = user.token;
 
-  try {
-    jwt.verify(user.token, 'secret') as JWTVerifyType;
-  } catch (err) {
-    if (err instanceof jwt.TokenExpiredError) {
-      token = generateNewToken(user.email);
+    try {
+      jwt.verify(user.token, 'secret') as JWTVerifyType;
+    } catch (err) {
+      if (err instanceof jwt.TokenExpiredError) {
+        token = generateNewToken(user.email);
+      }
     }
   }
-
   return user ? userDataExceptPassword({ ...user, token }) : false;
 };
 
