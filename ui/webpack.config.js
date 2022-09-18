@@ -5,11 +5,11 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.tsx',
+  entry: path.resolve(__dirname, 'src/index.tsx'),
   devtool: 'inline-source-map',
 
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].bundle.js',
     path: `${__dirname}/dist/`,
   },
